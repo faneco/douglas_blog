@@ -7,7 +7,7 @@ class MainHandler(webapp2.RequestHandler):
       """
 <html>
   <head>
-    <title>Awesome Blog!</title>
+    <title>Douglas blog!</title>
   </head>
   <body>
     <form method="post">
