@@ -3,10 +3,20 @@ import webapp2
 import os
 import jinja2
 
+from google.appengine.ext import ndb
 
+
+# Jinja2 Directory Configuration
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
+# Models
+
+class User(ndb.Model):
+  username = ndb.StringProperty(required = True)
+  email = ndb.StringProperty(required = True)
+  password = ndb.StringProperty(required = True)
+  created_at = ndb.DateTimeProperty(auto_now_add = True)
 
 class Handler(webapp2.RequestHandler):
   def write(self, *a, **kw):
@@ -31,9 +41,13 @@ class LoginHandler(Handler):
 class SignupHandler(Handler):
   def get(self):
     self.render("signup.html")
+ def post(self):
     
-
-   
+  username = self.request.get("username")
+    email = self.request.get("email")
+    password = self.request.get("password")
+    user = User(username = username, email = email, password = password)
+    user.put()
 
 
 app = webapp2.WSGIApplication([

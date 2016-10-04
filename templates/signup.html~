@@ -22,13 +22,13 @@
 
           </div>
            </div>
-          <form method="post">
+          <form id="form-login">
             <div class="mdl-card__supporting-text">
               <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="username" name="username">
                 <label class="mdl-textfield__label" for="username">Usuário</label>
               </div>
-     
+          <form id="form-login">
             <div class="mdl-card__supporting-text">
               <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="username" name="username">
@@ -45,7 +45,7 @@
             </div>
             <div class="mdl-card__actions mdl-card--border">
               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cadastra-se</button>
-           </form>
+              
   </body>
 </html>
      

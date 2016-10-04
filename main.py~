@@ -1,28 +1,43 @@
 
 import webapp2
+import os
+import jinja2
 
-class MainHandler(webapp2.RequestHandler):
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
+
+
+class Handler(webapp2.RequestHandler):
+  def write(self, *a, **kw):
+    self.response.out.write(*a, **kw)
+
+  def render_str(self, template, **params):
+    t = jinja_env.get_template(template)
+    return t.render(params)
+
+  def render(self, template, **kw):
+    self.write(self.render_str(template, **kw))
+
+
+class MainHandler(Handler):
   def get(self):
-    self.response.out.write(
-      """
-<html>
-  <head>
-    <title>Douglas blog!</title>
-  </head>
-  <body>
-    <form method="post">
-      <input type="text" name="nome">
-      <input type="submit">
-    </form>
-  </body>
-</html>
-      """
-    )
+    self.render("main.html")
 
-  def post(self):
-    nome = self.request.get("nome")
-    self.response.out.write("Oi " + nome)
+class LoginHandler(Handler):
+  def get(self):
+    self.render("login.html")
+
+class SignupHandler(Handler):
+  def get(self):
+    self.render("signup.html")
+    
+
+   
+
 
 app = webapp2.WSGIApplication([
-  ('/', MainHandler)
+  ('/', MainHandler),
+  ('/login', LoginHandler),
+  ('/signup', SignupHandler)
 ])
