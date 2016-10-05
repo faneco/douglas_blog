@@ -41,9 +41,8 @@ class LoginHandler(Handler):
 class SignupHandler(Handler):
   def get(self):
     self.render("signup.html")
- def post(self):
-    
-  username = self.request.get("username")
+  def post(self):  
+    username = self.request.get("username")
     email = self.request.get("email")
     password = self.request.get("password")
     user = User(username = username, email = email, password = password)

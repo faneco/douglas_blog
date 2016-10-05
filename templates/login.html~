@@ -40,7 +40,7 @@
               <!-- Primary-colored flat button -->
 				<button class="mdl-button mdl-js-button mdl-button--primary">  </button>
   				
-  				<a href="signup.html"><font color="#7c4dff"> cadastrar-se </a>
+  				<a href="signup"><font color="#7c4dff"> cadastrar-se </a>
             </div>
           </form>
         </div>
