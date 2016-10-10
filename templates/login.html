@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
@@ -7,7 +8,6 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.2.1/material.deep_purple-deep_orange.min.css">
-    <link rel="stylesheet" href="static/styles/login.css">
 
   </head>
 
@@ -30,7 +30,7 @@
                 </header>
                 <main class="mdl-layout">
 
-          <form mathod="post">
+          <form method="post">
             <div class="mdl-card__supporting-text">
               <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="username" name="username">
@@ -46,14 +46,13 @@
                 <label class="mdl-textfield__label" for="userpass">Senha</label>
                  {% if error == True %}
                   <span class="mdl-textfield__error" style="visibility: visible">Usuário ou senha inválidos!</span>
-              {% endif %}
+                 {% endif %}
               </div>
              
 
             <div class="mdl-card__actions mdl-card--border">
               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Logar</button>
               <!-- Primary-colored flat button -->
-				<button class="mdl-button mdl-js-button mdl-button--primary">  </button>
   				
   				<a href="signup"><font color="#7c4dff"> cadastrar-se </a>
             </div>

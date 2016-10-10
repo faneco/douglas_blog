@@ -41,28 +41,21 @@ class MainHandler(Handler):
 
 class LoginHandler(Handler):
   def get(self):
-self.render("login.html")
+    self.render("login.html")
 
-def post(self):
+  def post(self):
+    print "login"
     username = self.request.get("username")
     password = self.request.get("password")
     user = User.query(User.username == username).get()
-if user and user.password == password:
-
-    #vai entrar aqui se o usuario exisitr
- self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(username))
-self.redirect("/")
-  else:
-    #vai entra aqui se o usuario nao existir
-    self.render("login.html", error = True)
-
-class MainHandler(Handler):
-  def get(self):
-    self.render("main.html")
-
-class LoginHandler(Handler):
-  def get(self):
-    self.render("login.html")
+    if user and user.password == password:
+      #vai entrar aqui se o usuario exisitr
+      self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(username))
+      self.redirect("/")
+    else:
+      #vai entra aqui se o usuario nao existir
+      print("error")
+      self.render("login.html", error = True)
 
 class SignupHandler(Handler):
   def get(self):
