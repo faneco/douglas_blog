@@ -28,23 +28,19 @@ from google.appengine.ext import ndb
 
 # Hashing de senha
 def make_salt():
-return ''.join(random.choice(string.letters) for x in xrange(5))
+    return ''.join(random.choice(string.letters) for x in xrange(5))
 
 def make_pw_hash(name, pw, salt = None):
     if not salt:
       salt = make_salt()
     h = hashlib.sha256(name + pw + salt).hexdigest()
-return '%s,%s' % (h, salt)
+    return '%s,%s' % (h, salt)
 
 def valid_pw(name, pw, h):
     salt = h.split(',')[1]
     if make_pw_hash(name, pw, salt) == h:
         return True
-return False
-
-# Jinja2 Directory Configuration
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
+    return False
 
 # Criptografia de cookie
 SECRET = "Meu segredo..."
@@ -58,7 +54,7 @@ def make_secure_val(s):
 def check_secure_val(h):
     val = h.split('|')[0]
     if h == make_secure_val(val):
-return val
+        return val
 
 
 # Jinja2 Directory Configuration
@@ -116,11 +112,17 @@ class LoginHandler(Handler):
 class SignupHandler(Handler):
   def get(self):
     self.render("signup.html")
-  def post(self):  
+	
+	def post(self):
+	
     username = self.request.get("username")
     email = self.request.get("email")
     password = self.request.get("password")
-    user = User(username = username, email = email, password = password)
+    user = User(
+      username = username,
+      email = email,
+      password = make_pw_hash(username, password)
+    )
     user.put()
 
 
