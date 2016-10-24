@@ -68,11 +68,14 @@ class User(ndb.Model):
   password = ndb.StringProperty(required = True)
   created_at = ndb.DateTimeProperty(auto_now_add = True)
 
+<<<<<<< HEAD
 class Post(ndb.Model):
   title = ndb.StringProperty(required = True)
   text = ndb.StringProperty(required = True)
 
     
+=======
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
 
 # Default Handler
 
@@ -92,9 +95,14 @@ class Handler(webapp2.RequestHandler):
 class MainHandler(Handler):
   def get(self):
     user_id = self.request.cookies.get("user_id")
+<<<<<<< HEAD
     posts = Post.query().fetch()
     if user_id and check_secure_val(user_id):
       self.render("main.html", logado = True, posts = posts)
+=======
+    if user_id and check_secure_val(user_id):
+      self.render("main.html", logado = True)
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
     else:
       self.render("main.html", logado = False, posts = posts)
 
@@ -125,6 +133,7 @@ class SignupHandler(Handler):
     user = User(username = username, email = email, password = make_pw_hash(username, password))
     user.put()
     self.redirect("/login")
+<<<<<<< HEAD
 
 class PostHandler(Handler):
   def get(self):
@@ -136,11 +145,20 @@ class PostHandler(Handler):
     post = Post(title = title, text = text)
     post.put()
     self.redirect("/")
+=======
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
 
+class PostHandler(Handler):
+  def get(self):
+    self.render("post.html")
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
   ('/login', LoginHandler),
   ('/signup', SignupHandler),
   ('/post', PostHandler)
+<<<<<<< HEAD
 ])
+=======
+])
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
