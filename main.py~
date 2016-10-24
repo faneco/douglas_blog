@@ -68,11 +68,14 @@ class User(ndb.Model):
   password = ndb.StringProperty(required = True)
   created_at = ndb.DateTimeProperty(auto_now_add = True)
 
-class Postagem(ndb.Model):
-	username = ndb.StringProperty(required = True)
-	title = ndb.StringProperty(required = True)
-	text = ndb.StringProperty(required = True)
-	created_at = ndb.DateTimeProperty(auto_now_add = True)
+<<<<<<< HEAD
+class Post(ndb.Model):
+  title = ndb.StringProperty(required = True)
+  text = ndb.StringProperty(required = True)
+
+    
+=======
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
 
 # Default Handler
 
@@ -92,23 +95,20 @@ class Handler(webapp2.RequestHandler):
 class MainHandler(Handler):
   def get(self):
     user_id = self.request.cookies.get("user_id")
-    posts = Postagem.query().fetch()
-		postagens = False
-		if posts:
-			postagens = True
+<<<<<<< HEAD
+    posts = Post.query().fetch()
     if user_id and check_secure_val(user_id):
-	name = self.request.cookies.get("name")
-      self.render(index, logado = True, nome = name, postagens = postagens, posts = posts)
+      self.render("main.html", logado = True, posts = posts)
+=======
+    if user_id and check_secure_val(user_id):
+      self.render("main.html", logado = True)
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
     else:
-      self.render("main.html", logado = False)
+      self.render("main.html", logado = False, posts = posts)
 
 class LoginHandler(Handler):
   def get(self):
     self.render("login.html")
-
-  def signup(self):
-		self.redirect("/signup")
-
 
   def post(self):
     username = self.request.get("username")
@@ -122,31 +122,43 @@ class LoginHandler(Handler):
       # Vai entrar aqui se o usuário não existir
       self.render("login.html", error = True)
 
+class SignupHandler(Handler):
+  def get(self):
+    self.render("signup.html")
+    
+  def post(self):
+    username = self.request.get("username")
+    email = self.request.get("email")
+    password = self.request.get("password")
+    user = User(username = username, email = email, password = make_pw_hash(username, password))
+    user.put()
+    self.redirect("/login")
+<<<<<<< HEAD
+
 class PostHandler(Handler):
-	def get(self):
-		user_id = self.request.cookies.get("user_id")
-		if(user_id):
-			self.render(post, logado = True)
-		else:
-			self.render(post, logado = False)
+  def get(self):
+    self.render("post.html")
 
+  def post(self):
+    title = self.request.get("title")
+    text = self.request.get("text")
+    post = Post(title = title, text = text)
+    post.put()
+    self.redirect("/")
+=======
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
 
-	def post(self):
-		username = self.request.cookies.get("name")
-		title = self.request.get("title")
-		text = self.request.get("text")
-
-		if(username):
-			postagem = Postagem(username = username, title = title, text = text)
-			postagem.put();
-		else:
-			pass #erro ao postar
-
-		self.redirect("/")
+class PostHandler(Handler):
+  def get(self):
+    self.render("post.html")
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
   ('/login', LoginHandler),
   ('/signup', SignupHandler),
   ('/post', PostHandler)
+<<<<<<< HEAD
 ])
+=======
+])
+>>>>>>> c2f1abd5060f3237580d9cf9d740810f7d6a79d3
