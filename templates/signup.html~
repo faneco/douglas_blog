@@ -1,50 +1,95 @@
-<html>
+<html lang="pt-BR">
   <head>
-    <title>Douglas blog!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up</title>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">main</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a href="login" class="mdl-navigation__link">Login</a>
+        <a href="post" class="mdl-navigation__link">post</a>
+        <a href="/" class="mdl-navigation__link">main</a>
+      </nav>
+    </div>
+  </header>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.light_green-green.min.css" />
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
   </head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Douglas_Blog</title>
+  <style> 
+    .demonstracao-card {
+      height: 390px;
+    }
+    .mdl-layout {
+      align-items: center;
+      justify-content: center;
+    }
+  
+  </style>
 
-
-    
   <body>
-<body bgcolor="#b9f6ca">
-   
-  <div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-      <main class="mdl-layout__content">
-        <div class="mdl-card mdl-shadow--6dp">
-          <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-            <h2 class="mdl-card__title-text"><font color=" #3f51b5" size="" face"verdana"</font> Preencha o cadastro</h2>
+    <div class="fundo mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-color-text--white mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          
+          <span class="mdl-layout-title">Douglas_blog!</span>
+          <div class="mdl-layout-spacer"></div>
+          <nav class="mdl-navigation">
+            <a href="/" class="mdl-navigation__link mdl-color-text--white">Home</a>
+            <a href="login" class="mdl-navigation__link mdl-color-text--white">Login</a>
+            <a href="signup" class="mdl-navigation__link mdl-color-text--white">Sign Up</a>
+        </nav>
+        </div>
+        
+      </header>
 
-          </div>
-           </div>
-          <form method="post">
-            <div class="mdl-card__supporting-text">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="username" name="username">
-                <label class="mdl-textfield__label" for="username">Usuário</label>
-              </div>
-     
-            <div class="mdl-card__supporting-text">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="username" name="username">
-                <label class="mdl-textfield__label" for="username">Email</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="password" id="password" name="password">
-                <label class="mdl-textfield__label" for="userpass">Senha</label>
-              </div>
-               <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="password" id="password" name="password">
-                <label class="mdl-textfield__label" for="userpass">Repetir senha</label>
-              </div>
+      <main class="mdl-layout">
+        <center>
+          <div class="mdl-card mdl-shadow--6dp demonstracao-card ">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Cadastro</h2>
             </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cadastra-se</button>
-      </form>
+              <div class="mdl-card__actions mdl-card--border">
+                
+                <form method="post">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="username" name="username">
+                    <label class="mdl-textfield__label" for="username">Nome</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="email" name="email">
+                    <label class="mdl-textfield__label" for="email">Email</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="Password" id="password" name="password">
+                    <label class="mdl-textfield__label" for="password">Senha</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="Password" id="rpassword" name="rpassword">
+                    <label class="mdl-textfield__label" for="rpassword">Repetir Senha</label>
+                  </div>
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                  Cadastra-se
+                </button>
+              </form>  
+            </div>
+          </div>
+        </center>
+      </main>
+    </div>     
   </body>
 </html>
-     

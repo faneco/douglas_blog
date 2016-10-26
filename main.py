@@ -130,7 +130,7 @@ class PostHandler(Handler):
   def get(self):
     self.render("post.html")
 
-  def post(self):
+  def post(self):	
     title = self.request.get("title")
     text = self.request.get("text")
     post = Post(title = title, text = text)
